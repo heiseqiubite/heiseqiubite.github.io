@@ -171,7 +171,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-05-26 20:10:32'>2019-05-26 20:10</time>
+        创建时间:<time class="date" title='更新时间: 2019-12-17 16:26:49'>2019-05-26 20:10</time>
         
     </div>
     <div class="article-meta">
@@ -209,9 +209,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1、谷歌黑语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">site：可以限制你搜索范围的域名.</span><br><span class="line"></span><br><span class="line">inurl：用于搜索网页上包含的URL，这个语法对寻找网页上的搜索，帮助之类的很有用.</span><br><span class="line"></span><br><span class="line">intext: 只搜索网页&lt;body&gt;部分中包含的文字(也就是忽略了标题、URL等的文字)</span><br><span class="line"></span><br><span class="line">intitle: 查包含关键词的页面，一般用于社工别人的webshell密码</span><br><span class="line"></span><br><span class="line">filetype：搜索文件的后缀或者扩展名</span><br><span class="line"></span><br><span class="line">intitle：限制你搜索的网页标题.</span><br><span class="line"></span><br><span class="line">link: 可以得到一个所有包含了某个指定URL的页面列表.</span><br><span class="line"></span><br><span class="line">查找后台地址：site:域名 inurl:login|admin|manage|member|admin_login|login_admin|system|login|user|main|cms</span><br><span class="line"></span><br><span class="line">查找文本内容：site:域名 intext:管理|后台|登陆|用户名|密码|验证码|系统|帐号|admin|login|sys|managetem|password|username</span><br><span class="line"></span><br><span class="line">查找可注入点：site:域名 inurl:aspx|jsp|php|asp</span><br><span class="line"></span><br><span class="line">查找上传漏洞：site:域名 inurl:file|load|editor|Files</span><br><span class="line"></span><br><span class="line">找eweb编辑器：site:域名 inurl:ewebeditor|editor|uploadfile|eweb|edit</span><br><span class="line"></span><br><span class="line">存在的数据库：site:域名 filetype:mdb|asp|#</span><br><span class="line"></span><br><span class="line">查看脚本类型：site:域名 filetype:asp&#x2F;aspx&#x2F;php&#x2F;jsp</span><br><span class="line"></span><br><span class="line">迂回策略入侵：inurl:cms&#x2F;data&#x2F;templates&#x2F;images&#x2F;index&#x2F; </span><br><span class="line"></span><br><span class="line">利用谷歌黑客快速找到自己想要的资料：site:qiannao.com 提权视频</span><br></pre></td></tr></table></figure>
-
+        <ol>
+<li><p>site：可以限制你搜索范围的域名.</p>
+</li>
+<li><p>inurl：用于搜索网页上包含的URL，这个语法对寻找网页上的搜索，帮助之类的很有用.</p>
+</li>
+<li><p>intext: 只搜索网页<body>部分中包含的文字(也就是忽略了标题、URL等的文字)</p>
+</li>
+<li><p>intitle: 查包含关键词的页面，一般用于社工别人的webshell密码</p>
+</li>
+<li><p>filetype：搜索文件的后缀或者扩展名</p>
+</li>
+<li><p>intitle：限制你搜索的网页标题.</p>
+</li>
+<li><p>link: 可以得到一个所有包含了某个指定URL的页面列表.</p>
+</li>
+<li><p>查找后台地址：site:域名 inurl:login|admin|manage|member|admin_login|login_admin|system|login|user|main|cms</p>
+</li>
+<li><p>查找文本内容：site:域名 intext:管理|后台|登陆|用户名|密码|验证码|系统|帐号|admin|login|sys|managetem|password|username</p>
+</li>
+<li><p>查找可注入点：site:域名 inurl:aspx|jsp|php|asp</p>
+</li>
+<li><p>查找上传漏洞：site:域名 inurl:file|load|editor|Files</p>
+</li>
+<li><p>找eweb编辑器：site:域名 inurl:ewebeditor|editor|uploadfile|eweb|edit</p>
+</li>
+<li><p>存在的数据库：site:域名 filetype:mdb|asp|#</p>
+</li>
+<li><p>查看脚本类型：site:域名 filetype:asp/aspx/php/jsp</p>
+</li>
+<li><p>迂回策略入侵：inurl:cms/data/templates/images/index/ </p>
+</li>
+<li><p>利用谷歌黑客快速找到自己想要的资料：site:qiannao.com 提权视频</p>
+<p><img src="/Applications/dc_file/mylogo/source/_posts/image/%E5%86%85%E7%BD%91%E6%9A%B4%E9%9C%B2.png" alt=""></p>
+</li>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 heiseqiubite@qq.com </span>
@@ -229,7 +261,7 @@
     
     <p><span class="copy-title">本文作者:</span><a  title="单程">单程</a></p>
     <p><span class="copy-title">发布时间:</span>2019-05-26, 20:10:32</p>
-    <p><span class="copy-title">最后更新:</span>2019-05-26, 20:10:32</p>
+    <p><span class="copy-title">最后更新:</span>2019-12-17, 16:26:49</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/05/26/%E8%B0%B7%E6%AD%8C%E9%BB%91%E8%AF%AD%E6%B3%95/" title="谷歌黑语法">http://yoursite.com/2019/05/26/%E8%B0%B7%E6%AD%8C%E9%BB%91%E8%AF%AD%E6%B3%95/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
